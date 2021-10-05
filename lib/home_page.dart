@@ -11,6 +11,14 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
+class ColumnObj {
+  final double height;
+  final double width;
+  final Color color;
+
+  ColumnObj({required this.height, required this.width, required this.color});
+}
+
 class _HomePageState extends State<HomePage> {
   final double _mainContainerWidth = 360;
   final double _mainContainerHeight = 160;
@@ -25,6 +33,12 @@ class _HomePageState extends State<HomePage> {
   List<int> column = [0, 1, 2, 3];
   List<double> randomHeightValues = [1, 1, 1, 1];
   List<double> randomWidthValues = [75, 75, 75, 75];
+
+  // List<ColumnObj> carWashList = [
+  //   ColumnObj(width: 50, height: 100, color: Colors.blue),
+  //   ColumnObj(width: 50, height: 100, color: Colors.blue),
+  //   ColumnObj(width: 50, height: 100, color: Colors.blue),
+  // ];
 
   @override
   Widget build(BuildContext context) {
