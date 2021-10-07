@@ -28,10 +28,6 @@ class ChallengesPage extends StatelessWidget {
                 text:
                     "The Edge cases were to generate single random numbers in a single run so i had to do a forloop to make sure i always get different values and i put those in a List",
               ),
-              challangeListCard(
-                text:
-                    "I found it tricky to put a Row while the Column is dynamic",
-              ),
             ],
           )),
     );
