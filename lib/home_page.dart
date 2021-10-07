@@ -1,8 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:random_container/generated2.dart';
 
 import 'challanges.dart';
+import 'generated.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,17 +13,11 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class ColumnObj {
-  final double height;
-  final double width;
-  final Color color;
-
-  ColumnObj({required this.height, required this.width, required this.color});
-}
-
 class _HomePageState extends State<HomePage> {
   final double _mainContainerWidth = 360;
-  final double _mainContainerHeight = 160;
+  final double _mainContainerHeight = 200;
+
+  late double percentageWidth = MediaQuery.of(context).size.width * 0.5;
 
   double widthOfContainers = 75;
 
@@ -31,14 +27,11 @@ class _HomePageState extends State<HomePage> {
   int numberOfColumns = 4;
 
   List<int> column = [0, 1, 2, 3];
+  // List<int> column = [0];
   List<double> randomHeightValues = [1, 1, 1, 1];
   List<double> randomWidthValues = [75, 75, 75, 75];
 
-  // List<ColumnObj> carWashList = [
-  //   ColumnObj(width: 50, height: 100, color: Colors.blue),
-  //   ColumnObj(width: 50, height: 100, color: Colors.blue),
-  //   ColumnObj(width: 50, height: 100, color: Colors.blue),
-  // ];
+  late double tembColWidth = _mainContainerWidth / 4;
 
   @override
   Widget build(BuildContext context) {
@@ -69,28 +62,70 @@ class _HomePageState extends State<HomePage> {
           width: _mainContainerWidth,
           height: _mainContainerHeight,
           color: Colors.grey[200],
-          child: Row(
-            // mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              for (var i in column)
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Flexible(
-                      child: Container(
-                        height: randomHeightValues[i],
-                        width: randomWidthValues[i],
-                        color: _color,
-                        child: Text(
-                          i.toString(),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-            ],
+
+          child: Center(
+            child: Text("Just press the button an check the Terminal"),
           ),
+
+          // child: Row(
+          //   mainAxisAlignment: MainAxisAlignment.end,
+          //   crossAxisAlignment: CrossAxisAlignment.end,
+          //   children: [
+          //     for (var i in column)
+          //       // if(tembColWidth != _mainContainerHeight)
+
+          //       Column(
+          //         mainAxisAlignment: MainAxisAlignment.end,
+          //         children: [
+          //           Flexible(
+          //             child: Container(
+          //               height: randomHeightValues[i],
+          //               width: randomWidthValues[i],
+          //               // width: percentageWidth,
+          //               // height: columnObj[i].height,
+          //               // width: tembColWidth,
+          //               color: _color,
+          //               child: Text(
+          //                 i.toString(),
+          //               ),
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //   ],
+          // ),
+
+          // child: Wrap(
+          //   direction: Axis.vertical,
+          //   alignment: WrapAlignment.start,
+          //   children: [
+          //     Container(
+          //       color: Colors.red,
+          //       height: 50,
+          //       width: 360,
+          //       child: Text("row"),
+          //     ),
+          //     Container(
+          //       color: Colors.red,
+          //       height: 150,
+          //       width: 50,
+          //       child: Text("col"),
+          //     ),
+
+          //     // Container(
+          //     //   color: Colors.red,
+          //     //   height: 130,
+          //     //   width: 50,
+          //     //   child: Text("col"),
+          //     // ),
+          //     // Container(
+          //     //   color: Colors.red,
+          //     //   height: 150,
+          //     //   width: 260,
+          //     //   child: Text("col"),
+          //     // ),
+          //   ],
+          // ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -124,6 +159,9 @@ class _HomePageState extends State<HomePage> {
               randomHeightValues.add(randomHeight);
               randomWidthValues.add(widthOfContainers);
             }
+
+            // generateRandomColumn();
+            RotationChallenge().buildObject();
 
             // Generate a random color.
             _color = Color.fromRGBO(
